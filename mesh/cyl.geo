@@ -1,7 +1,7 @@
 // Gmsh allows variables; these will be used to set desired
 // element sizes at various Points
 radius = 0.5;
-bl = 0.8;
+bl = 0.7;
 outer = 2.3;
 far = 50;
 
@@ -10,11 +10,11 @@ lz = 6.28;
 nz = 1;
 
 n_pi = 80;
-n_bl = 30; 
+n_bl = 25; 
 n_inner = 40; 
 n_outer = 80; 
 
-p_bl = 1.15;
+p_bl = 1.2;
 p_inner = 1.02;
 p_outer = 1.04;
 

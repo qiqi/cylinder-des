@@ -23,7 +23,7 @@ boundaryField
     inflow
     {
         type            fixedValue;
-        value           uniform 0;
+        value           uniform 3E-7;
     }
 
     outflow
@@ -36,7 +36,7 @@ boundaryField
     wall
     {
         type            fixedValue;
-        value           uniform 0;
+        value           uniform 1E-10;
     }
 
     near
