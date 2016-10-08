@@ -137,9 +137,10 @@ Line Loop(61) = {45, -41, -47, 20};
 Plane Surface(62) = {61};
 
 Transfinite Surface{52,54,56,58,60,62};
-Coherence;
 
 Recombine Surface {14,16,18,20,29,31,33,35,52,54,56,58,60,62};
+
+Coherence;
 
 Extrude {0, 0, lz} {
 Surface{14,16,18,20,29,31,33,35,52,54,56,58,60,62};
@@ -147,8 +148,10 @@ Layers{nz};
 Recombine;
 }
 
+Coherence;
+
 Physical Surface("inflow") = {247, 273, 317, 347, 295};
-Physical Surface("outflow") = {251, 343};
+Physical Surface("outflow") = {251, 343, 361};
 Physical Surface("wall") = {137, 115, 101, 79};
 Physical Surface("near") = {282, 260, 304, 326, 348, 370, 194, 172, 238, 216, 150, 84, 106, 128};
 Physical Surface("far") = {52, 54, 56, 58, 60, 62, 31, 33, 35, 29, 20, 18, 16, 14};
