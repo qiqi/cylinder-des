@@ -39,12 +39,12 @@ boundaryField
 
     near
     {
-        type            empty;
+        type            cyclic;
     }
 
     far
     {
-        type            empty;
+        type            cyclic;
     }
 }
 

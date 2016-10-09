@@ -32,14 +32,14 @@ subs = {
     'far': '''
         type            cyclic;
         neighbourPatch  near;''',
-     'near': '''
+    'near': '''
         type            cyclic;
         neighbourPatch  far;''',
-     'wall': '''
+    'wall': '''
         type            wall;'''
 }
 regex = '[\s]*{0}[\s]+{{[\s]+type[\s]+patch;[\s]+physicalType[\s]+patch;'
-repl = '\n    {0}{1}'
+repl = '\n    {0}\n    {{{1}'
 for patch_name, content in subs.items():
     boundary = re.sub(regex.format(patch_name),
                       repl.format(patch_name, content),
