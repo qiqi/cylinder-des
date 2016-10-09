@@ -1,16 +1,16 @@
 // Gmsh allows variables; these will be used to set desired
 // element sizes at various Points
 radius = 0.5;
-bl = 0.7;
+bl = 0.75;
 outer = 2.3;
 far = 50;
 
 //lz = 0.0628;
-lz = 6.28;
-nz = 1;
+lz = 2;
+nz = 48;
 
 n_pi = 80;
-n_bl = 25; 
+n_bl = 27; 
 n_inner = 40; 
 n_outer = 80; 
 
@@ -38,10 +38,10 @@ Point(12) = {-outer, -outer, 0};
 Point(13) = {-outer,  outer, 0};
 
 Point(14) = { 0,      far,   0};
-Point(15) = { far,    far,   0};
+Point(15) = { far,    far+1, 0}; // assymmetry
 Point(16) = { far,    outer, 0};
 Point(17) = { far,   -outer, 0};
-Point(18) = { far,   -far,   0};
+Point(18) = { far,   -far-2, 0}; // assymmetry
 Point(19) = { 0,     -far,   0};
 Point(20) = {-far*a, -far*a, 0};
 Point(21) = {-far*a,  far*a, 0};
@@ -147,8 +147,6 @@ Surface{14,16,18,20,29,31,33,35,52,54,56,58,60,62};
 Layers{nz};
 Recombine;
 }
-
-Coherence;
 
 Physical Surface("inflow") = {247, 273, 317, 347, 295};
 Physical Surface("outflow") = {251, 343, 361};
