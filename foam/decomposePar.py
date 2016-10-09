@@ -1,3 +1,4 @@
+content = '''
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
@@ -6,36 +7,21 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
-{
+{{
     version     2.0;
     format      ascii;
     class       dictionary;
     location    "system";
     object      decomposeParDict;
-}
+}}
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains 4;
+numberOfSubdomains {0};
 
 method          scotch;
 
-simpleCoeffs
-{
-    n               (4 1 1);
-    delta           0.001;
-}
-
-hierarchicalCoeffs
-{
-    n               (4 2 1);
-    delta           0.001;
-    order           xyz;
-}
-
-manualCoeffs
-{
-    dataFile        "cellDecomposition";
-}
-
-
 // ************************************************************************* //
+'''.format(open('../mpi_size').read())
+
+with open('system/decomposeParDict', 'wt') as f:
+    f.write(content)
