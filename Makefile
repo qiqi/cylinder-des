@@ -3,7 +3,7 @@ default:	foam/constant/polyMesh/boundary
 mesh/cyl.msh:	mesh/cyl.geo
 	cd mesh; gmsh -3 cyl.geo > gmsh.out
 
-foam/constant/polyMesh/boundary:	mesh/cyl.msh mesh/boundary.py
+foam/constant/polyMesh/boundary:	mesh/cyl.msh foam/boundary.py
 	cd foam; gmshToFoam ../mesh/cyl.msh > gmshToFoam.out; python boundary.py
 
 foam/system/decomposeParDict:	foam/decomposePar.py mpi_size
