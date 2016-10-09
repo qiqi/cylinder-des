@@ -10,7 +10,7 @@ foam/system/decomposeParDict:	foam/decomposePar.py mpi_size
 	cd foam; python decomposePar.py
 
 foam/processor0/constant/polyMesh/boundary:	foam/constant/polyMesh/boundary foam/system/decomposeParDict
-	cd foam; decomposePar > decomposePar.out
+	cd foam; rm -rf processor*; decomposePar > decomposePar.out
 
 NP=$(shell cat mpi_size)
 
