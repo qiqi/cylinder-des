@@ -7,12 +7,12 @@ far = 50;
 
 //lz = 0.0628;
 lz = 2;
-nz = 48;
+nz = 1;
 
-n_pi = 80;
-n_bl = 27; 
-n_inner = 40; 
-n_outer = 80; 
+n_pi = 16;
+n_bl = 8; 
+n_inner = 8; 
+n_outer = 8; 
 
 p_bl = 1.2;
 p_inner = 1.02;
