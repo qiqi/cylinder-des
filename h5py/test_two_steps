@@ -6,11 +6,12 @@ cp -r data/0 two_steps/step_1
 cp -r data/constant two_steps/step_1
 cp -r data/system two_steps/step_1
 cd two_steps/step_1
-pisoFoam > out
+../../../pisoFoam/pisoFoam > out
 cd ../..
 cp -r two_steps/step_1/1* two_steps/step_2/0
 cp -r data/constant two_steps/step_2
 cp -r data/system two_steps/step_2
 cd two_steps/step_2
-pisoFoam > out
+../../../pisoFoam/pisoFoam > out
+#sed -i -e "s/writeInterval   2;/writeInterval   100;/g" system/controlDict 
 cd ../..
