@@ -38,7 +38,7 @@ writeFormat     ascii;
 
 writePrecision  18;
 
-writeCompression compressed;
+writeCompression off;
 
 timeFormat      general;
 

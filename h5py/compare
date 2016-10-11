@@ -1,0 +1,3 @@
+source ./test_two_steps &
+source ./test_one_step &
+wait

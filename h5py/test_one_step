@@ -1,0 +1,9 @@
+rm -rf one_step
+mkdir one_step
+cp -r data/0 one_step
+cp -r data/constant one_step
+cp -r data/system one_step
+cd one_step
+sed -i -e "s/endTime         1;/endTime         2;/g" system/controlDict 
+pisoFoam > out
+cd ..
