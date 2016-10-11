@@ -38,11 +38,11 @@ writeFormat     ascii;
 
 writePrecision  18;
 
-writeCompression off;
+writeCompression compressed;
 
 timeFormat      general;
 
-timePrecision   18;
+timePrecision   4;
 
 runTimeModifiable true;
 

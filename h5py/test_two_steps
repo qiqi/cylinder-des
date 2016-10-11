@@ -3,12 +3,14 @@ mkdir two_steps
 mkdir two_steps/step_1
 mkdir two_steps/step_2
 cp -r data/0 two_steps/step_1
+gzip two_steps/step_1/0/*
 cp -r data/constant two_steps/step_1
 cp -r data/system two_steps/step_1
 cd two_steps/step_1
 ../../../pisoFoam/pisoFoam > out
 cd ../..
-cp -r two_steps/step_1/1* two_steps/step_2/0
+python foam_to_h5.py two_steps/step_1 1 two_steps/1.hdf5
+python h5_to_foam.py two_steps/step_1 two_steps/1.hdf5 two_steps/step_2 0
 cp -r data/constant two_steps/step_2
 cp -r data/system two_steps/step_2
 cd two_steps/step_2

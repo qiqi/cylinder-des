@@ -94,7 +94,8 @@ class DataWriter:
                 for i in range(len(split_line)):
                     if split_depth[i] > 0:
                         ni = len(split_line[i].strip().split())
-                        data_i = [repr(d) for d in data[data_ptr:data_ptr+ni]]
+                        data_i = ['{0:.18g}'.format(d)
+                                  for d in data[data_ptr:data_ptr+ni]]
                         data_ptr += ni
                         if '\n' in split_line[i]:
                             split_line[i] = ' '.join(data_i) + '\n'

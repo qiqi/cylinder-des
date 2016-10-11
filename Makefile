@@ -2,6 +2,9 @@ default:	foam/constant/polyMesh/boundary foam/system/decomposeParDict foam/proce
 
 NP=$(shell cat mpi_size)
 
+pisoFoam/pisoFoam:	pisoFoam/*.H pisoFoam/*.C
+	cd pisoFoam; wmake
+
 mesh/cyl.msh:	mesh/cyl.geo
 	cd mesh; gmsh -3 cyl.geo > gmsh.out
 
@@ -14,8 +17,8 @@ foam/system/decomposeParDict:	foam/decomposePar.py mpi_size
 foam/processor0/constant/polyMesh/boundary:	foam/constant/polyMesh/boundary foam/system/decomposeParDict
 	cd foam; rm -rf processor*; decomposePar > decomposePar.out
 
-run:	foam/constant/polyMesh/boundary foam/processor0/constant/polyMesh/boundary foam/system/decomposeParDict
-	cd foam; rm -rf 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*; mpiexec -np $(NP) pisoFoam -parallel > pisoFoam.out
+run:	foam/constant/polyMesh/boundary foam/processor0/constant/polyMesh/boundary foam/system/decomposeParDict pisoFoam/pisoFoam
+	cd foam; rm -rf 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*; mpiexec -np $(NP) ../pisoFoam/pisoFoam -parallel > pisoFoam.out
 
 # Tiny mesh for debugging
 mesh/tiny.msh:	mesh/tiny.geo
@@ -36,6 +39,6 @@ tiny/system/decomposeParDict:	tiny/decomposePar.py mpi_size
 tiny/processor0/constant/polyMesh/boundary:	tiny/constant/polyMesh/boundary tiny/system/decomposeParDict
 	cd tiny; rm -rf processor*; decomposePar > decomposePar.out
 
-run-tiny:	tiny tiny/constant/polyMesh/boundary tiny/processor0/constant/polyMesh/boundary tiny/system/decomposeParDict
-	cd tiny; rm -rf 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*; mpiexec -np $(NP) pisoFoam -parallel > pisoFoam.out
+run-tiny:	tiny tiny/constant/polyMesh/boundary tiny/processor0/constant/polyMesh/boundary tiny/system/decomposeParDict pisoFoam/pisoFoam
+	cd tiny; rm -rf 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*; mpiexec -np $(NP) ../pisoFoam/pisoFoam -parallel > pisoFoam.out
 
