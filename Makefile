@@ -36,6 +36,6 @@ tiny/system/decomposeParDict:	tiny/decomposePar.py mpi_size
 tiny/processor0/constant/polyMesh/boundary:	tiny/constant/polyMesh/boundary tiny/system/decomposeParDict
 	cd tiny; rm -rf processor*; decomposePar > decomposePar.out
 
-run-tiny:	tiny/constant/polyMesh/boundary tiny/processor0/constant/polyMesh/boundary tiny/system/decomposeParDict
+run-tiny:	tiny tiny/constant/polyMesh/boundary tiny/processor0/constant/polyMesh/boundary tiny/system/decomposeParDict
 	cd tiny; rm -rf 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*; mpiexec -np $(NP) pisoFoam -parallel > pisoFoam.out
 
