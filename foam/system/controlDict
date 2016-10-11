@@ -20,7 +20,7 @@ application     pisoFoam;
 
 startFrom       startTime;
 
-startTime       0;
+startTime       10.0000000000000071;
 
 stopAt          endTime;
 
