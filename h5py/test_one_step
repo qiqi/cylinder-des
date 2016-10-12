@@ -5,5 +5,9 @@ cp -r data/constant one_step
 cp -r data/system one_step
 cd one_step
 sed -i -e "s/endTime         1;/endTime         2;/g" system/controlDict 
-../../pisoFoam/pisoFoam > out
+decomposePar > out0
+mpiexec -np 4 ../../pisoFoam/pisoFoam -parallel > out
+reconstructPar
+cp 2/*.gz .
+gunzip *.gz
 cd ..

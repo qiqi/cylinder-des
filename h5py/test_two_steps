@@ -7,13 +7,14 @@ gzip two_steps/step_1/0/*
 cp -r data/constant two_steps/step_1
 cp -r data/system two_steps/step_1
 cd two_steps/step_1
-../../../pisoFoam/pisoFoam > out
+decomposePar > out0
+mpiexec -np 4 ../../../pisoFoam/pisoFoam -parallel > out
 cd ../..
-python foam_to_h5.py two_steps/step_1 1 two_steps/1.hdf5
-python h5_to_foam.py two_steps/step_1 two_steps/1.hdf5 two_steps/step_2 0
-cp -r data/constant two_steps/step_2
-cp -r data/system two_steps/step_2
+mpiexec -np 4 python foam_to_h5.py two_steps/step_1 1 two_steps/1.hdf5
+mpiexec -np 4 python h5_to_foam.py two_steps/step_1 two_steps/1.hdf5 two_steps/step_2 0
 cd two_steps/step_2
-../../../pisoFoam/pisoFoam > out
-#sed -i -e "s/writeInterval   2;/writeInterval   100;/g" system/controlDict 
+mpiexec -np 4 ../../../pisoFoam/pisoFoam -parallel > out
+reconstructPar
+cp 1/*.gz ..
+gunzip ../*.gz
 cd ../..

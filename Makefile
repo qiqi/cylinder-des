@@ -1,4 +1,4 @@
-default:	foam/constant/polyMesh/boundary foam/system/decomposeParDict foam/processor0/constant/polyMesh/boundary
+default:	foam/constant/polyMesh/boundary foam/system/decomposeParDict foam/processor0/constant/polyMesh/boundary pisoFoam/pisoFoam
 
 NP=$(shell cat mpi_size)
 

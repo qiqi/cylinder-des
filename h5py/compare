@@ -1,3 +1,10 @@
-source ./test_two_steps &
-source ./test_one_step &
-wait
+source ./test_two_steps
+source ./test_one_step
+diff one_step/U two_steps/
+diff one_step/nut two_steps/
+diff one_step/nuTilda two_steps/
+diff one_step/nuTilda_0 two_steps/
+diff one_step/p two_steps/
+diff one_step/phi two_steps/
+diff one_step/phi_0 two_steps/
+diff one_step/U_0 two_steps/
